@@ -19,6 +19,9 @@
   /* ---- Year ---- */
   var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 
+  /* ---- Map data-accent → --acc custom property ---- */
+  $$('[data-accent]').forEach(function (el) { el.style.setProperty('--acc', el.getAttribute('data-accent')); });
+
   /* ---- Nav ---- */
   var nav = $('#nav');
   var onScrollNav = function () { if (nav) nav.classList.toggle('scrolled', window.scrollY > 40); };

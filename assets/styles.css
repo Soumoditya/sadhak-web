@@ -164,10 +164,28 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacin
 .fcard:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--acc) 45%,transparent);
   box-shadow:0 24px 60px -30px color-mix(in srgb,var(--acc) 70%,transparent)}
 .fcard:hover::before{opacity:1}
-.fcard__icon{font-size:2rem;width:60px;height:60px;display:grid;place-items:center;border-radius:16px;
-  margin-bottom:1.2rem;background:color-mix(in srgb,var(--acc) 16%,transparent);position:relative}
+.fcard__icon{width:62px;height:62px;display:grid;place-items:center;border-radius:16px;
+  margin-bottom:1.3rem;background:color-mix(in srgb,var(--acc,#F07830) 15%,transparent);position:relative;
+  border:1px solid color-mix(in srgb,var(--acc,#F07830) 30%,transparent)}
+.fcard__icon svg{width:30px;height:30px;color:var(--acc,#F07830);
+  transition:transform .5s var(--ease)}
+.fcard:hover .fcard__icon svg{transform:scale(1.08) rotate(-3deg)}
 .fcard h3{font-size:1.5rem;margin-bottom:.5rem;position:relative}
 .fcard p{color:var(--muted);font-size:.98rem;position:relative}
+
+/* ============ Principles ============ */
+.principles{padding:clamp(4rem,9vw,7rem) 0}
+.principle-grid{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.2rem,5vw,3rem);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.pcard{position:relative;padding:2rem 1.6rem;border-radius:20px;border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);overflow:hidden;
+  transition:transform .5s var(--ease),border-color .5s}
+.pcard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--acc,#F07830) 40%,transparent)}
+.pcard__no{font-family:var(--serif);font-size:.9rem;color:var(--faint);letter-spacing:.2em}
+.pcard__ic{width:48px;height:48px;margin:1rem 0 1.1rem;color:var(--acc,#F07830)}
+.pcard__ic svg{width:100%;height:100%}
+.pcard h3{font-size:1.3rem;margin-bottom:.4rem}
+.pcard p{color:var(--muted);font-size:.92rem}
 
 /* ============ Timeline / Day ============ */
 .day{padding:clamp(4rem,9vw,7rem) 0}
@@ -252,6 +270,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacin
 /* ============ Responsive ============ */
 @media (max-width:900px){
   .feature-grid{grid-template-columns:1fr 1fr}
+  .principle-grid{grid-template-columns:1fr 1fr}
   .fcard--wide{grid-column:span 2}
   .showcase{grid-template-columns:1fr;text-align:center}
   .showcase__text p{margin-left:auto;margin-right:auto}
@@ -263,6 +282,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacin
 }
 @media (max-width:560px){
   .feature-grid{grid-template-columns:1fr}
+  .principle-grid{grid-template-columns:1fr}
   .fcard--wide{grid-column:span 1}
   .values__row{gap:2.4rem}
   .tl-item{gap:1rem}
