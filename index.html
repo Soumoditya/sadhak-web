@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0E13" />
+
+  <title>Sadhak — Your Hindu Spiritual Companion</title>
+  <meta name="description" content="Sadhak is a modern Hindu companion for daily practice — precise location-aware Panchang, a living festival calendar, nearby temples on a live map, a sacred library, aartis, japa, and a community of fellow sadhaks." />
+  <meta name="author" content="Sadhak" />
+  <link rel="canonical" href="https://sadhak-app.vercel.app/" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/emblem.png" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sadhak" />
+  <meta property="og:title" content="Sadhak — Your Hindu Spiritual Companion" />
+  <meta property="og:description" content="Precise Panchang, a living Hindu calendar, nearby temples on a live map, a sacred library, aartis, japa & a devoted community — beautifully in one app." />
+  <meta property="og:url" content="https://sadhak-app.vercel.app/" />
+  <meta property="og:image" content="https://sadhak-app.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sadhak — Your Hindu Spiritual Companion" />
+  <meta name="twitter:description" content="Precise Panchang, a living Hindu calendar, nearby temples, a sacred library, aartis, japa & community — one beautiful app." />
+  <meta name="twitter:image" content="https://sadhak-app.vercel.app/assets/og.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Sadhak",
+    "operatingSystem": "Android",
+    "applicationCategory": "LifestyleApplication",
+    "description": "A modern Hindu spiritual companion — Panchang, calendar, temples, library, aarti, japa and community.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  }
+  </script>
+</head>
+<body>
+  <!-- ░░ Preloader ░░ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__mark">
+      <span class="preloader__ring"></span>
+      <img src="/assets/emblem.png" alt="" class="preloader__emblem" />
+    </div>
+    <div class="preloader__word"><span>S</span><span>A</span><span>D</span><span>H</span><span>A</span><span>K</span></div>
+  </div>
+
+  <!-- ░░ Scroll progress sun ░░ -->
+  <div class="sunbar" aria-hidden="true"><span class="sunbar__fill" id="sunfill"></span></div>
+
+  <!-- ░░ Nav ░░ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="Sadhak home">
+      <img src="/assets/emblem.png" alt="Sadhak" />
+      <span>Sadhak</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#day">A Day</a>
+      <a href="#library">Library</a>
+      <a href="#download" class="nav__cta">Get the app</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <!-- ░░ HERO ░░ -->
+    <section class="hero" id="hero">
+      <div class="hero__sky" data-parallax="0.15"></div>
+      <div class="hero__sun" data-parallax="0.28"></div>
+      <div class="hero__rays" data-parallax="0.22"></div>
+      <div class="hero__hills" data-parallax="0.05"></div>
+      <div class="hero__grain"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal">॥ अथ योगानुशासनम् ॥</p>
+        <h1 class="hero__title">
+          <span class="reveal-line"><span>Your Hindu</span></span>
+          <span class="reveal-line"><span>spiritual <em>companion</em></span></span>
+        </h1>
+        <p class="hero__sub reveal">Panchang, calendar, temples, library, aarti, japa and community —
+          crafted into one calm, precise, beautiful daily practice.</p>
+        <div class="hero__actions reveal">
+          <a href="#download" class="btn btn--primary magnetic"><span>Get the app</span></a>
+          <a href="#features" class="btn btn--ghost">Explore features</a>
+        </div>
+        <p class="hero__note reveal">Free · Android · Ad-light · No account required to begin</p>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true"><span></span>scroll</div>
+    </section>
+
+    <!-- ░░ MANIFESTO ░░ -->
+    <section class="manifesto" id="manifesto">
+      <p class="manifesto__text">
+        <span class="word">From</span> <span class="word">the</span> <span class="word">first</span>
+        <span class="word">light</span> <span class="word">of</span> <span class="word">Brahma</span>
+        <span class="word">Muhurta</span> <span class="word">to</span> <span class="word">the</span>
+        <span class="word">evening</span> <span class="word">aarti,</span>
+        <span class="word accent">Sadhak</span> <span class="word">walks</span> <span class="word">your</span>
+        <span class="word">day</span> <span class="word">with</span> <span class="word">you</span> —
+        <span class="word">accurate,</span> <span class="word">authentic,</span> <span class="word">unhurried.</span>
+      </p>
+    </section>
+
+    <!-- ░░ FEATURES ░░ -->
+    <section class="features" id="features">
+      <div class="section-head reveal">
+        <span class="kicker">The practice, complete</span>
+        <h2>Everything a sadhak needs,<br/>nothing they don't.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="fcard reveal" data-accent="#F07830">
+          <div class="fcard__icon">☀️</div>
+          <h3>Precise Panchang</h3>
+          <p>Tithi, nakshatra, yoga, karana and muhurats — computed for your exact location, sunrise and timezone.</p>
+        </article>
+        <article class="fcard reveal" data-accent="#C49A2C">
+          <div class="fcard__icon">📿</div>
+          <h3>Japa Mala</h3>
+          <p>A tactile digital mala that counts with a gentle haptic pulse, so your focus stays on the mantra.</p>
+        </article>
+        <article class="fcard reveal fcard--wide" data-accent="#1B7A42">
+          <div class="fcard__icon">🛕</div>
+          <h3>Temples &amp; Bhandaras, near you</h3>
+          <p>A live, interactive map finds temples and bhandaras around you — search, get directions, and go.</p>
+        </article>
+        <article class="fcard reveal" data-accent="#7C3AED">
+          <div class="fcard__icon">📅</div>
+          <h3>Living Calendar</h3>
+          <p>Festivals, ekadashi and auspicious days — a Hindu calendar that actually knows the date.</p>
+        </article>
+        <article class="fcard reveal" data-accent="#1565C0">
+          <div class="fcard__icon">📖</div>
+          <h3>Sacred Library</h3>
+          <p>Read the Gita, Puranas, stotras and chalisas in a clean built-in reader — online or off.</p>
+        </article>
+        <article class="fcard reveal fcard--wide" data-accent="#D94F00">
+          <div class="fcard__icon">🪔</div>
+          <h3>Aarti, Mantra &amp; Community</h3>
+          <p>Daily aartis with text and audio, and a warm community of fellow sadhaks to share the path.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ░░ A DAY WITH SADHAK ░░ -->
+    <section class="day" id="day">
+      <div class="section-head reveal">
+        <span class="kicker">A day with Sadhak</span>
+        <h2>Dawn to dusk, in rhythm.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <span class="tl-time">04:48</span>
+          <div class="tl-body"><h3>Brahma Muhurta</h3><p>Wake to the day's Panchang and an auspicious start.</p></div>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-time">06:30</span>
+          <div class="tl-body"><h3>Morning Aarti</h3><p>Chant along with text and audio, mala in hand.</p></div>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-time">12:00</span>
+          <div class="tl-body"><h3>Guidance</h3><p>Grooming and activity guidance, tuned to the tithi and to you.</p></div>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-time">18:31</span>
+          <div class="tl-body"><h3>Evening &amp; Temple</h3><p>Find a nearby temple, or read a shloka before rest.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ SHOWCASE / DEVICE ░░ -->
+    <section class="showcase" id="library">
+      <div class="showcase__text reveal">
+        <span class="kicker">Handcrafted, not generic</span>
+        <h2>A calm interface,<br/>built with care.</h2>
+        <p>Every screen respects your attention — deep saffron on ink, generous space, and motion that guides rather than distracts. Designed to feel premium on every phone.</p>
+        <a href="#download" class="btn btn--primary magnetic"><span>Get the app</span></a>
+      </div>
+      <div class="showcase__device reveal">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="mini-sun"></div>
+            <img src="/assets/emblem.png" class="phone__emblem" alt="Sadhak app" />
+            <div class="phone__word">SADHAK</div>
+            <div class="phone__tag">Your Spiritual Companion</div>
+          </div>
+        </div>
+        <div class="phone__glow"></div>
+      </div>
+    </section>
+
+    <!-- ░░ VALUES ░░ -->
+    <section class="values">
+      <div class="values__row">
+        <div class="value reveal"><span class="value__num" data-count="5">0</span><span class="value__label">Panchang elements, exact</span></div>
+        <div class="value reveal"><span class="value__num" data-count="12">0</span><span class="value__label">Indian languages</span></div>
+        <div class="value reveal"><span class="value__num" data-count="100">0</span><span class="value__suffix">%</span><span class="value__label">Free to begin</span></div>
+      </div>
+    </section>
+
+    <!-- ░░ DOWNLOAD ░░ -->
+    <section class="cta" id="download">
+      <div class="cta__inner reveal">
+        <img src="/assets/emblem.png" alt="" class="cta__emblem" />
+        <h2>Begin your practice.</h2>
+        <p>Sadhak is coming to the Play Store. Reserve your calm corner of the day.</p>
+        <div class="cta__buttons">
+          <a href="#" class="store-badge" aria-label="Get it on Google Play (coming soon)">
+            <span class="store-badge__k">Coming soon to</span>
+            <span class="store-badge__v">Google Play</span>
+          </a>
+          <a href="mailto:soumodityapramanik@gmail.com" class="btn btn--ghost">Contact us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer">
+    <div class="footer__brand">
+      <img src="/assets/emblem.png" alt="Sadhak" />
+      <div>
+        <strong>Sadhak</strong>
+        <p>Your Hindu spiritual companion</p>
+      </div>
+    </div>
+    <div class="footer__links">
+      <a href="mailto:soumodityapramanik@gmail.com">Contact</a>
+      <a href="#features">Features</a>
+      <a href="#download">Get the app</a>
+    </div>
+    <p class="footer__made">Made with 🙏 in India · © <span id="year">2026</span> Sadhak</p>
+  </footer>
+
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

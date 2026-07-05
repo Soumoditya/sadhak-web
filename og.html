@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital@1&family=Inter:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1200px;height:630px;overflow:hidden;font-family:'Inter',sans-serif;
+    background:radial-gradient(120% 120% at 78% 120%,#3a1403 0%,#1a0d0a 38%,#0B0E13 68%);
+    color:#F5F3F0;display:flex;align-items:center;padding:0 90px;position:relative}
+  .sun{position:absolute;right:-60px;bottom:-160px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%,#ff5a2a,#a81f08 70%,transparent 72%);filter:blur(1px);opacity:.9}
+  .rays{position:absolute;right:200px;bottom:100px;width:900px;height:900px;transform:translate(50%,50%);
+    background:conic-gradient(from 0deg,transparent 0 8deg,rgba(240,120,48,.18) 8deg 9deg,transparent 9deg 18deg,rgba(245,166,35,.12) 18deg 19deg,transparent 19deg 28deg);
+    -webkit-mask:radial-gradient(circle,transparent 40%,#000 41% 60%,transparent 62%)}
+  .left{position:relative;z-index:2;max-width:680px}
+  .emblem{width:120px;height:120px;border-radius:50%;box-shadow:0 0 60px rgba(217,79,0,.6);margin-bottom:34px}
+  .word{font-family:'Marcellus',serif;font-size:58px;letter-spacing:.34em;padding-left:.34em;margin-bottom:10px}
+  h1{font-family:'Marcellus',serif;font-weight:400;font-size:62px;line-height:1.04;margin-bottom:22px}
+  h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:#F5A623}
+  p{font-size:26px;color:rgba(245,243,240,.7);max-width:620px;line-height:1.4}
+  .chips{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .chip{font-size:18px;padding:8px 18px;border:1px solid rgba(240,120,48,.4);border-radius:100px;
+    background:rgba(217,79,0,.12);color:#F5F3F0}
+</style></head>
+<body>
+  <div class="rays"></div><div class="sun"></div>
+  <div class="left">
+    <img src="/assets/emblem.png" class="emblem" alt=""/>
+    <div class="word">SADHAK</div>
+    <h1>Your Hindu <em>spiritual companion</em></h1>
+    <p>Panchang · Calendar · Temples · Library · Aarti · Japa · Community</p>
+    <div class="chips"><span class="chip">Accurate</span><span class="chip">Authentic</span><span class="chip">Beautiful</span></div>
+  </div>
+</body></html>
