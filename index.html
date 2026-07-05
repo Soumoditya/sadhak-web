@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/assets/styles.css?v=3" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -45,6 +45,18 @@
     "applicationCategory": "LifestyleApplication",
     "description": "A modern Hindu spiritual companion — Panchang, calendar, temples, library, aarti, japa and community.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is Sadhak free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sadhak is free to begin — daily Panchang, the Hindu calendar, nearby temples, the sacred library, aartis and japa are all included at no cost." } },
+      { "@type": "Question", "name": "Does Sadhak show an accurate Panchang for my city?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sadhak computes tithi, nakshatra, yoga, karana and muhurats from real astronomical calculation for your exact location, sunrise and timezone." } },
+      { "@type": "Question", "name": "Can I find nearby temples?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sadhak opens a live interactive map of Hindu temples around you with search, filters and directions." } },
+      { "@type": "Question", "name": "Which languages does Sadhak support?", "acceptedAnswer": { "@type": "Answer", "text": "Sadhak supports major Indian languages including Hindi, Bengali, Marathi, Gujarati, Tamil, Telugu, Kannada, Malayalam, Punjabi, Assamese and Odia." } }
+    ]
   }
   </script>
 </head>
@@ -288,6 +300,40 @@
     </section>
   </main>
 
+    <!-- ░░ FAQ (SEO) ░░ -->
+    <section class="faq" id="faq">
+      <div class="section-head reveal">
+        <span class="kicker">Questions, answered</span>
+        <h2>Everything you might ask.</h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq__item reveal" open>
+          <summary>Is Sadhak free to use?</summary>
+          <p>Yes. Sadhak is free to begin — daily Panchang, the Hindu calendar, nearby temples, the sacred library, aartis and japa are all included at no cost, with no account required to start.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Does Sadhak show an accurate Panchang for my city?</summary>
+          <p>Yes. Sadhak computes tithi, nakshatra, yoga, karana and muhurats from real astronomical calculation for your exact location, sunrise, sunset and timezone — so your daily Hindu Panchang is precise, not a copied almanac table.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Can I find nearby temples and bhandaras?</summary>
+          <p>Yes. Sadhak opens a live, interactive map of Hindu temples around you using your current location, with search, filters and directions — so you can discover and reach temples near you easily.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>What does the Hindu calendar include?</summary>
+          <p>The living Hindu calendar highlights festivals, ekadashi, purnima, amavasya and auspicious days, with grooming and activity guidance tuned to the tithi — a practical Hindu festival calendar for the whole year.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Which languages does Sadhak support?</summary>
+          <p>Sadhak is being built for Bharat, with support planned across major Indian languages including Hindi, Bengali, Marathi, Gujarati, Tamil, Telugu, Kannada, Malayalam, Punjabi, Assamese and Odia.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Is my data private?</summary>
+          <p>Yes. Your practice is yours. Sadhak keeps data minimal and never sells it, and ads (where present) stay out of your reading, chanting and prayer.</p>
+        </details>
+      </div>
+    </section>
+
   <!-- ░░ FOOTER ░░ -->
   <footer class="footer">
     <div class="footer__brand">
@@ -308,6 +354,6 @@
 
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
-  <script src="/assets/main.js?v=3" defer></script>
+  <script src="/assets/main.js?v=4" defer></script>
 </body>
 </html>
