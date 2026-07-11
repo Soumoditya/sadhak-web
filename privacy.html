@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0E13" />
+  <title>Privacy Policy — Sadhak</title>
+  <meta name="description" content="How Sadhak collects, uses, and protects your information. We never sell your data and use no advertising trackers." />
+  <link rel="canonical" href="https://sadhak-app.vercel.app/privacy" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/emblem.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --ink:#0B0E13; --ink-2:#0F1218; --ink-3:#141922;
+      --saffron:#D94F00; --saffron-2:#F07830; --amber:#F5A623;
+      --ivory:#F5F3F0; --muted:rgba(245,243,240,.62); --faint:rgba(245,243,240,.34);
+      --line:rgba(245,243,240,.10);
+      --serif:'Marcellus',serif; --display:'Cormorant Garamond',serif; --sans:'Inter',system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--sans);background:var(--ink);color:var(--ivory);line-height:1.7;
+      -webkit-font-smoothing:antialiased;padding:0 20px}
+    a{color:var(--saffron-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .sunbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:120;
+      background:linear-gradient(90deg,var(--maroon,#8B1A1A),var(--saffron),var(--amber))}
+    .wrap{max-width:760px;margin:0 auto;padding:72px 0 96px}
+    .back{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;
+      letter-spacing:.02em;color:var(--muted);margin-bottom:40px}
+    .back:hover{color:var(--ivory);text-decoration:none}
+    .kicker{font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+      color:var(--saffron-2);margin-bottom:14px}
+    h1{font-family:var(--serif);font-weight:400;font-size:2.6rem;line-height:1.05;
+      letter-spacing:-.01em;margin-bottom:10px}
+    .updated{color:var(--faint);font-size:.85rem;margin-bottom:8px}
+    .intro{color:var(--muted);font-size:1.05rem;margin:22px 0 48px;
+      font-family:var(--display);font-style:italic}
+    section{padding:28px 0;border-top:1px solid var(--line)}
+    h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:16px;color:var(--ivory)}
+    ul{list-style:none}
+    li{position:relative;padding-left:22px;margin-bottom:11px;color:var(--muted)}
+    li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;
+      background:var(--saffron)}
+    .callout{background:var(--ink-3);border:1px solid var(--line);border-radius:16px;
+      padding:22px 24px;margin-top:40px;color:var(--muted)}
+    .callout strong{color:var(--ivory);font-weight:600}
+    footer{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);
+      color:var(--faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    @media(max-width:560px){h1{font-size:2rem}.wrap{padding:52px 0 72px}}
+  </style>
+</head>
+<body>
+  <div class="sunbar"></div>
+  <div class="wrap">
+    <a href="/" class="back">← Back to Sadhak</a>
+    <p class="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: 12 July 2026</p>
+    <p class="intro">Sadhak respects your privacy. This policy describes how we collect, use, and protect your information — and the choices you have.</p>
+
+    <section>
+      <h2>Information we collect</h2>
+      <ul>
+        <li>Account information (email, display name) when you register.</li>
+        <li>Profile data (gender, marriage status) you provide, used only for personalization.</li>
+        <li>Approximate location (city / state) for accurate Panchang calculations.</li>
+        <li>Basic app-usage data to improve the experience.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How we use your information</h2>
+      <ul>
+        <li>Personalize grooming guidance based on your gender and marriage status.</li>
+        <li>Calculate accurate Panchang, sunrise, sunset and Rahu Kaal for your location.</li>
+        <li>Send spiritual reminders and festival notifications (only if enabled).</li>
+        <li>Display your profile in community chat, if you choose to enable it.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Data storage &amp; security</h2>
+      <ul>
+        <li>Data is stored securely with Google Firebase (Firestore &amp; Realtime Database).</li>
+        <li>Profile images are stored via Cloudinary over encrypted transfer.</li>
+        <li>We use industry-standard encryption for all data in transit.</li>
+        <li>We never sell, trade, or rent your personal information to anyone.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Third-party services</h2>
+      <ul>
+        <li>Google Firebase — authentication, database, and analytics.</li>
+        <li>Cloudinary — image hosting.</li>
+        <li>Expo Notifications — push-notification delivery.</li>
+        <li>We do <strong>not</strong> use any advertising SDKs or trackers.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Location data</h2>
+      <ul>
+        <li>Location is used <strong>only</strong> for Panchang calculations (sunrise, sunset, Rahu Kaal).</li>
+        <li>We store only city and state — never precise GPS coordinates.</li>
+        <li>Location access is optional; the app works without it.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Your rights</h2>
+      <ul>
+        <li>Delete your account and all associated data anytime from Settings.</li>
+        <li>Use the app as a Guest without providing any personal information.</li>
+        <li>Disable notifications at any time.</li>
+        <li>Request a copy of your data by emailing us.</li>
+        <li>Control community visibility and direct messages from your Profile.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Children's privacy</h2>
+      <ul>
+        <li>Sadhak is suitable for all ages and contains only spiritual / educational content.</li>
+        <li>We do not knowingly collect data from children under 13.</li>
+        <li>Parents or guardians may contact us to delete a child's data.</li>
+      </ul>
+    </section>
+
+    <div class="callout">
+      Questions about your privacy, or want your data deleted? Email
+      <strong><a href="mailto:soumodityapramanik@gmail.com">soumodityapramanik@gmail.com</a></strong>
+      and we'll help.
+    </div>
+
+    <footer>
+      <span>© 2026 Sadhak</span>
+      <span><a href="/">Home</a> &nbsp;·&nbsp; <a href="/terms">Terms &amp; Conditions</a></span>
+    </footer>
+  </div>
+</body>
+</html>
