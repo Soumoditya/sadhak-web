@@ -113,6 +113,57 @@
   window.addEventListener('resize', function () { litManifesto(); });
   litManifesto();
 
+  /* ---- Darshan marquee: duplicate the track for a seamless loop ---- */
+  var track = $('#darshanTrack');
+  if (track && !reduce) {
+    var originals = $$('.deity', track);
+    originals.forEach(function (fig) {
+      var clone = fig.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  }
+
+  /* ---- Staggered reveal delay for grouped items ---- */
+  ['.feature-grid', '.principle-grid', '.timeline', '.faq__list', '.values__row'].forEach(function (sel) {
+    var group = $(sel);
+    if (!group) return;
+    $$('.reveal', group).forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i * 0.07, 0.42) + 's';
+    });
+  });
+
+  /* ---- Card tilt (feature + deity) ---- */
+  if (!reduce && window.matchMedia('(hover:hover)').matches) {
+    $$('.fcard, .deity').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', (-py * 8).toFixed(2) + 'deg');
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--ry', '0deg');
+        card.style.setProperty('--rx', '0deg');
+      });
+    });
+
+    /* ---- Hero cursor parallax (gentle depth) ---- */
+    var hero = $('.hero');
+    if (hero) {
+      hero.addEventListener('mousemove', function (e) {
+        var mx = (e.clientX / window.innerWidth - 0.5);
+        var my = (e.clientY / window.innerHeight - 0.5);
+        $$('[data-parallax]', hero).forEach(function (l) {
+          var f = parseFloat(l.getAttribute('data-parallax')) || 0;
+          l.style.marginLeft = (mx * f * 40).toFixed(1) + 'px';
+          l.style.marginTop = (my * f * 30).toFixed(1) + 'px';
+        });
+      });
+    }
+  }
+
   /* ---- Magnetic buttons ---- */
   if (!reduce && window.matchMedia('(hover:hover)').matches) {
     $$('.magnetic').forEach(function (btn) {
