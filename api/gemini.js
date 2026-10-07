@@ -6,11 +6,11 @@
 //
 // SETUP (one time, in the Vercel dashboard for this project):
 //   Settings → Environment Variables → add  GEMINI_KEY = <your Gemini key>
+//   (optional) GEMINI_KEY_2 = a second key, tried first; busy models fall back.
 //
 // The app sends the same body it used to send to Google; we just attach the key.
 
-const GEMINI_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+import { callGemini } from './_gemini.js';
 
 export default async function handler(req, res) {
   // Allow the mobile app (any origin) to call this endpoint.
@@ -20,19 +20,13 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const key = process.env.GEMINI_KEY;
-  if (!key) return res.status(500).json({ error: 'Server is missing GEMINI_KEY' });
-
   try {
-    const upstream = await fetch(GEMINI_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-goog-api-key': key },
-      body: JSON.stringify(req.body || {}),
-    });
-    const text = await upstream.text();
-    res.status(upstream.status);
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+    const r = await callGemini(body);
+    res.status(r.status);
     res.setHeader('Content-Type', 'application/json');
-    return res.send(text);
+    if (r.model) res.setHeader('X-Sadhak-Model', r.model);
+    return res.send(r.text);
   } catch (e) {
     return res.status(502).json({ error: 'Upstream request failed', detail: String(e).slice(0, 200) });
   }

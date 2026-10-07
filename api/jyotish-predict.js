@@ -15,7 +15,7 @@ const SIGNS = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', '
 const norm = (x) => ((x % 360) + 360) % 360;
 const GRAHAS = [['Sun', C.SE_SUN], ['Moon', C.SE_MOON], ['Mars', C.SE_MARS], ['Mercury', C.SE_MERCURY], ['Jupiter', C.SE_JUPITER], ['Venus', C.SE_VENUS], ['Saturn', C.SE_SATURN]];
 
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+const { callGemini } = require('./_gemini.js');
 
 function currentTransits() {
   const now = new Date();
@@ -40,9 +40,6 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
-  const key = process.env.GEMINI_KEY;
-  if (!key) return res.status(500).json({ error: 'Server missing GEMINI_KEY' });
-
   try {
     const b = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
     const { kundli, period = 'daily', name } = b;
@@ -65,19 +62,14 @@ Interpret the transits against this natal chart for the ${period} ahead. Be spec
 Return STRICT JSON with these keys (arrays are short strings, 2-5 items):
 {"overview": "2-3 warm sentences", "goodFor": ["..."], "avoid": ["..."], "doToday": ["..."], "remedies": ["simple dharmic remedies: mantra/daan/fasting"], "transit": "1-2 sentences on the key transit now", "lucky": {"color": "", "number": "", "direction": ""}}`;
 
-    const g = await fetch(GEMINI_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-goog-api-key': key },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 2048, responseMimeType: 'application/json' },
-      }),
+    const g = await callGemini({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.7, maxOutputTokens: 2048, responseMimeType: 'application/json' },
     });
-    if (!g.ok) {
-      const t = await g.text();
-      return res.status(g.status === 429 ? 429 : 502).json({ error: g.status === 429 ? 'Astrologer is busy — try again shortly.' : 'AI error', detail: t.slice(0, 160) });
+    if (g.status !== 200) {
+      return res.status(g.status === 429 ? 429 : 502).json({ error: g.status === 429 ? 'Astrologer is busy, try again shortly.' : 'AI error', detail: g.text.slice(0, 160) });
     }
-    const data = await g.json();
+    const data = JSON.parse(g.text);
     const txt = data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '{}';
     let parsed; try { parsed = JSON.parse(txt); } catch { parsed = { overview: txt }; }
 
