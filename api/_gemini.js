@@ -9,7 +9,16 @@ const MODELS = [
 ];
 const RETRY = new Set([404, 429, 500, 502, 503, 504]);
 
-async function callGemini(body, { models = MODELS, timeoutMs = 25000 } = {}) {
+// Thinking makes flash models 3-5x slower and eats the output budget (cut-off
+// JSON). Sadhak's answers don't need it, so it is off unless a caller asks.
+function fast(body) {
+  const gc = body.generationConfig || {};
+  if (gc.thinkingConfig) return body;
+  return { ...body, generationConfig: { ...gc, thinkingConfig: { thinkingBudget: 0 } } };
+}
+
+async function callGemini(rawBody, { models = MODELS, timeoutMs = 25000 } = {}) {
+  let body = fast(rawBody);
   const keys = [process.env.GEMINI_KEY_2, process.env.GEMINI_KEY].filter(Boolean);
   if (!keys.length) return { status: 500, text: JSON.stringify({ error: { message: 'Server is missing GEMINI_KEY' } }) };
   let last = { status: 503, text: JSON.stringify({ error: { message: 'All models are busy. Please try again in a minute.' } }) };
@@ -27,6 +36,8 @@ async function callGemini(body, { models = MODELS, timeoutMs = 25000 } = {}) {
         const text = await r.text();
         if (r.ok) return { status: 200, text, model };
         last = { status: r.status, text };
+        // A model that rejects the thinking setting: send the request as given.
+        if (r.status === 400 && body !== rawBody && /thinking/i.test(text)) { body = rawBody; continue; }
         if (!RETRY.has(r.status)) return last;
       } catch (e) {
         last = { status: 504, text: JSON.stringify({ error: { message: `Upstream timeout on ${model}` } }) };

@@ -71,7 +71,10 @@ Return STRICT JSON with these keys (arrays are short strings, 2-5 items):
     }
     const data = JSON.parse(g.text);
     const txt = data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '{}';
-    let parsed; try { parsed = JSON.parse(txt); } catch { parsed = { overview: txt }; }
+    // Models sometimes wrap JSON in code fences or add a line around it.
+    const jsonText = (txt.match(/\{[\s\S]*\}/) || [txt])[0];
+    let parsed;
+    try { parsed = JSON.parse(jsonText); } catch { parsed = { overview: txt.replace(/```(json)?/g, '').replace(/[{}"\[\]]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400) }; }
 
     return res.status(200).json({
       period, date: today,
